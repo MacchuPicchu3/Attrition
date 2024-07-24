@@ -1,0 +1,13 @@
+#sets adjusted base health
+$execute as @s run attribute @s minecraft:generic.max_health base set $(health_score)
+
+#initiates fixed text display
+function mp.attr:health_loss/fixed_text
+
+#initiates flavor text display
+execute as @s[tag=!mp.cntr.custom_text] if score @s mp.attr.score matches 1..10 run function mp.attr:internals/flavor_text {range:"1..5",color:"#B00000",text_1:"A fragment of health has dissipated into the wind! A terrible price to pay for the privilege of rebirth.",text_2:"You are playing a cruel game of attrition against life itself, and it would appear that one side has just blundered. . .",text_3:"Another death? Truly, you must curb your naïve ways before they permanently transform you into a ghost!",text_4:"The gods slide you a hastily written note that explains where one might happen to find enchanted golden apples.\\n ● Ancient City chests (8.4% chance)\\n ● Bastion Remnant treasure chests (5.9% chance)\\n ● Desert Pyramid chests (2.6% chance)\\n ● Dungeon chests (3.1% chance)\\n ● Mineshaft chest minecarts (1.4% chance)\\n ● Ruined Portal chests (1.5% chance)\\n ● Trial Chamber ominous vaults (16.9% chance)\\n ● Woodland Mansion chests (3.1% chance)",text_5:"The gods resurrect you from the dead, but not without cost; you feel weakened."}
+execute as @s[tag=!mp.cntr.custom_text] if score @s mp.attr.score matches 11..28 run function mp.attr:internals/flavor_text {range:"1..5",color:"#D85555",text_1:"As atonement for death, the gods have sacrificed a bit of health on your behalf",text_2:"Your return to consciousness is marked by a newfound sense of vulnerability.",text_3:"Your return to consciousness is marked by a newfound sense of vulnerability.",text_4:"A lamentable development, this, though the consumption of an enchanted golden apple would turn the tide in your favor.",text_5:"The gods resurrect you from the dead, but not without cost; you feel weakened."}
+execute as @s[tag=!mp.cntr.custom_text] if score @s mp.attr.score matches 29.. run function mp.attr:internals/flavor_text {range:"1..5",color:"#FFA8A8",text_1:"Be honest – that was most likely a void death, wasn’t it? How unfortunate.",text_2:"Your gruesome demise is imminent!. . . at some point, eventually. idk",text_3:"How does one manage to become a casualty after having acquired such unholy amounts of health?",text_4:"The gods would like to express their heartfelt condolences with the following message: ez",text_5:"The gods resurrect you from the dead, but not without cost; you feel weakened."}
+
+#plays sounds for losing health
+execute at @s[tag=!mp.attr.sounds_off] run playsound minecraft:particle.soul_escape neutral @s ~ ~ ~ 10

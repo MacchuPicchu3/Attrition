@@ -1,0 +1,11 @@
+ {
+       "id": "mp.attr",
+       "pack": {
+           "pack_format": 48,
+           "supported_formats": {
+            "min_inclusive": 46,
+            "max_inclusive": 48
+           },
+           "description": {"text":"Each death costs one heart; losing them all is game over!","color":"#AAAAAA"}
+       }
+   }
